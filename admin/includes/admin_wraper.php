@@ -7,9 +7,20 @@
                 Blank Page
                 <small>Subheading</small>
             </h1>
+
+            <?php
+            //make test
+            $sql = "SELECT * FROM users ";
+            $result = $databases->query($sql);
+            $user_found = mysqli_fetch_array($result);
+
+                echo $user_found['username'];
+            ?>
+
+
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                    <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-file"></i> Blank Page

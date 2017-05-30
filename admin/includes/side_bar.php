@@ -1,11 +1,4 @@
 
-/**
- * Created by PhpStorm.
- * User: erevos13
- * Date: 30/5/2017
- * Time: 12:31 πμ
- */
-
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li>
@@ -19,6 +12,9 @@
         </li>
         <li>
             <a href="comments.php"><i class="fa fa-fw fa-edit"></i> Comments</a>
+        </li>
+        <li>
+            <a href="photos.php"><i class="fa fa-fw fa-camera-retro"></i>Photos</a>
         </li>
 
     </ul>

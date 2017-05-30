@@ -1,10 +1,4 @@
 
-/**
- * Created by PhpStorm.
- * User: erevos13
- * Date: 30/5/2017
- * Time: 12:28 πμ
- */
 
 <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -13,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="../index.php">Admin Home page</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
