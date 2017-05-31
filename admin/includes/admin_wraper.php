@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -9,12 +10,31 @@
             </h1>
 
             <?php
-            //make test
-            $sql = "SELECT * FROM users ";
-            $result = $databases->query($sql);
-            $user_found = mysqli_fetch_array($result);
+            //i call the class
+            // here is if i would like to instasiet
+            // $user = new Users();
 
-                echo $user_found['username'];
+            /*$result_set = Users::find_all_users();
+
+            while($row = mysqli_fetch_array($result_set)){
+
+                echo $row['username']. "<br>";
+
+            }*/
+
+
+            /*$result_id = Users::find_id_users(1);
+            $row = mysqli_fetch_array($result_id);
+            $user = Users::instantation($row);
+            echo $user->password;*/
+
+            $users = Users::find_all_users();
+
+            foreach ($users as $user){
+                echo $user->username;
+            }
+
+
             ?>
 
 
