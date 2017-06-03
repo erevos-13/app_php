@@ -1,5 +1,4 @@
 <?php require_once "includes/header.php";?>
-
 <?php
 /**
  * Created by PhpStorm.
@@ -10,7 +9,7 @@
  */
 if ($session->is_signed_in()){
     redirect("index.php");
-
+    exit();
 }
 
 

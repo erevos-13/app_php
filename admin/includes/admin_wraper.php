@@ -41,13 +41,14 @@
 
             $result_id = Users::find_id_users(1);
             echo  $result_id->username;
+            print_r($_SESSION);
 
             ?>
 
 
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
+                    <i class="fa fa-dashboard"></i>  <a href="../index.php">Dashboard</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-file"></i> Blank Page

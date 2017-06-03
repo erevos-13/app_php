@@ -5,7 +5,7 @@ class Session {
     /*the session i would like to use every time open the app */
 
 
-    private $signed_in;
+    private $signed_in = false;
     public $user_id; //use the id for do thinks
 
     //every time i run the app is running this
@@ -24,7 +24,7 @@ class Session {
     public function login($user){
 
         if ($user){
-            $this->user_id = $_SESSION['user_id'] = $this->user_id;
+            $this->user_id = $_SESSION['user_id'] = $user->id;
             $this->signed_in = true;
         }
 
