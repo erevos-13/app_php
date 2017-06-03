@@ -28,12 +28,19 @@
             $user = Users::instantation($row);
             echo $user->password;*/
 
-            $users = Users::find_all_users();
+            /*$users = Users::find_all_users();
 
             foreach ($users as $user){
                 echo $user->username;
             }
 
+
+            */?>
+
+            <?php
+
+            $result_id = Users::find_id_users(1);
+            echo  $result_id->username;
 
             ?>
 

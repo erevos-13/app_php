@@ -6,8 +6,13 @@
  * Time: 11:39 μμ
  */
 
-// this the connection db constants
+// this the include the files
 
-include "new_config.php";
-include "database.php";
-include "user.php";
+
+
+require_once 'session.php';
+require_once "new_config.php";
+require_once "database.php";
+require_once "user.php";
+require_once "function.php"; //this the way that has only going to use the file once in the app.
+
