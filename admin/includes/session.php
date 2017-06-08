@@ -7,12 +7,14 @@ class Session {
 
     private $signed_in = false;
     public $user_id; //use the id for do thinks
+    public $message;
 
     //every time i run the app is running this
     function __construct()
     {
         session_start();
         $this->check_the_login();
+        $this->check_message();
     }
 
     //getter method is the method to call the private
@@ -49,6 +51,24 @@ class Session {
             $this->signed_in = false;
         }
     }
+
+    public function message($msg=""){
+        if(!empty($msg)){
+            $_SESSION['message'] = $msg;
+        }else{
+            return $this->message;
+        }
+    }
+
+    private function check_message(){
+        if (isset($_SESSION['message'])){
+            $this->message = $_SESSION['message'];
+            unset($_SESSION['message']);
+        }else{
+            $this->message = "";
+        }
+    }
+
 
 
 

@@ -58,7 +58,7 @@ class Database{
 
     public function the_insert_id(){
 
-        return $this->con->insert_id;
+        return mysqli_insert_id($this->con);
 
     }
 

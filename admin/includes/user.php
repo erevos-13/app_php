@@ -8,7 +8,10 @@
 
 
 class Users  {
-
+    //i make aprotected statid var for the table in databases
+    protected static   $db_table = "users";
+    //here i make a var array so i can call an array for every fild
+    protected static   $db_table_filds = array('username', 'password', 'first_name', 'last_name');
     public $id;
     public $username;
     public $password;
@@ -113,6 +116,88 @@ class Users  {
 
     }
 
+    //i create a method so i can call it from avery were
+    protected function properties(){
+
+
+        $properties = array();
+        foreach (self::$db_table_filds as $db_field){
+            if (property_exists($this, $db_field)){
+                $properties[$db_field] = $this->$db_field;
+            }
+
+        }
+
+        return $properties;
+
+    }
+
+    //create a function tha detect if user exist
+    public function save(){
+
+        if (isset($this->id)) {
+            return $this->update();
+        } else {
+            return $this->create();
+        }
+    }
+
+
+
+    public function create( ){
+        global $databases;
+
+        $properties = $this->properties();
+
+        //values for users
+        $userName = $databases->escape_string($this->username);
+        $userPass = $databases->escape_string($this->password);
+        $userFisrt = $databases->escape_string($this->first_name);
+        $usersLast = $databases->escape_string($this->last_name);
+
+        $sql = "INSERT INTO ".self::$db_table." (". implode("," , array_keys($properties))         .")";
+        $sql .= "VALUES ('".
+
+            implode("','", array_values($properties))
+
+            ."')";
+
+        if ($databases->query($sql)){
+            $this->id = $databases->the_insert_id();
+            return true;
+
+        }else{
+            return false;
+
+        }
+    }
+
+    public function update(){
+        global $databases;
+
+        $userName = $databases->escape_string($this->username);
+        $userPass = $databases->escape_string($this->password);
+        $userFirst = $databases->escape_string($this->first_name);
+        $userLast = $databases->escape_string($this->last_name);
+        $userId = $databases->escape_string($this->id);
+
+        $sql = "UPDATE ".self::$db_table." SET username='{$userName}', password='{$userPass}' ,first_name='{$userFirst}',last_name='{$userLast}' WHERE id={$userId}";
+
+        $databases->query($sql);
+
+        return (mysqli_affected_rows($databases->con) == 1) ? true : die;
+    }
+
+    public function delete(){
+        global $databases;
+
+        $userId =  $databases->escape_string($this->id);
+
+        $sql = "DELETE FROM ".self::$db_table." WHERE id={$userId}";
+        $databases->query($sql);
+
+        return (mysqli_affected_rows($databases->con) == 1) ? true :false;
+    }
 
 
 
@@ -120,4 +205,6 @@ class Users  {
 
 
 
-}
+
+
+} //end of users class

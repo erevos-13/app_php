@@ -39,9 +39,40 @@
 
             <?php
 
-            $result_id = Users::find_id_users(1);
+            /*$result_id = Users::find_id_users(1);
             echo  $result_id->username;
-            print_r($_SESSION);
+            print_r($_SESSION);*/
+
+            $user = new Users();
+
+            $user->username = "maria";
+            $user->password = "erevos13";
+            $user->first_name = "mairy";
+            $user->last_name = "arvaniti";
+
+            $user->create();
+
+            /*//i have to call first the user id
+            $user = Users::find_id_users(6);
+            $user->delete();*/
+
+
+
+            /*$user = new Users();
+            $user->id = 3;
+            $user->last_name = "arvaniti";
+
+            //then i call the update method or delete
+            $user->save();*/
+
+            /*$user = new Users();
+            $user->id = 3;
+            $user->username = "orfeas";
+            $user->password = "orfeas";
+            $user->first_name = "orfeas";
+            $user->last_name = "orfeas";
+            $user->update();*/
+
 
             ?>
 
