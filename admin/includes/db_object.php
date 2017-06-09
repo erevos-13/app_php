@@ -20,10 +20,10 @@ class Db_object
     public static function find_id($id){
         global $databases;
 
-        /*$set_result_id =self::find_this_query("SELECT * FROM users WHERE id = $id");
+        /*$set_result_id =static::find_this_query("SELECT * FROM users WHERE id = $id");
         return $set_result_id;*/
         global $databases;
-        $the_result_array = static::find_this_query("SELECT * FROM ".self::$db_table." ");
+        $the_result_array = static::find_this_query("SELECT * FROM ".static::$db_table." ");
 
 
         return !empty($the_result_array)? array_shift($the_result_array):false;
@@ -67,6 +67,125 @@ class Db_object
         return array_key_exists($the_attribute, $object_properties);
 
     }
+
+
+
+
+    //create a function tha detect if user exist
+    public function save(){
+
+        if (isset($this->id)) {
+            return $this->update();
+        } else {
+            return $this->create();
+        }
+    }
+
+
+
+    public function create( ){
+        global $databases;
+
+        $properties = $this->clean_properties();
+
+        //values for users
+        /*$userName = $databases->escape_string($this->username);
+        $userPass = $databases->escape_string($this->password);
+        $userFisrt = $databases->escape_string($this->first_name);
+        $usersLast = $databases->escape_string($this->last_name);*/
+
+        $sql = "INSERT INTO ".static::$db_table." (". implode("," , array_keys($properties))         .")";
+        $sql .= "VALUES ('".
+
+            implode("','", array_values($properties))
+
+            ."')";
+
+        if ($databases->query($sql)){
+            $this->id = $databases->the_insert_id();
+            return true;
+
+        }else{
+            return false;
+
+        }
+    }
+
+    public function update(){
+        global $databases;
+
+
+        $properties = $this->clean_properties();
+
+        $properties_pair = array();
+
+        foreach ($properties as $key => $value){
+            $properties_pair[] = "{$key}= '{$value}'     ";
+        }
+
+
+
+
+        $userName = $databases->escape_string($this->username);
+        $userPass = $databases->escape_string($this->password);
+        $userFirst = $databases->escape_string($this->first_name);
+        $userLast = $databases->escape_string($this->last_name);
+        $userId = $databases->escape_string($this->id);
+
+        $sql = "UPDATE ".static::$db_table." SET ".implode(",",$properties_pair) ." WHERE id={$userId}";
+
+        $databases->query($sql);
+
+        return (mysqli_affected_rows($databases->con) == 1) ? true : die;
+    }
+
+    public function delete(){
+        global $databases;
+
+        $userId =  $databases->escape_string($this->id);
+
+        $sql = "DELETE FROM ".static::$db_table." WHERE id={$userId}";
+        $databases->query($sql);
+
+        return (mysqli_affected_rows($databases->con) == 1) ? true :false;
+    }
+
+
+    //this function is going to clean the
+    protected function clean_properties(){
+        global $databases;
+
+
+        $clean_properties = array();
+
+        foreach ($this->properties() as $key => $value){
+            $clean_properties[$key] = $databases->escape_string($value);
+        }
+
+        return $clean_properties;
+
+
+    }
+
+
+
+    //i create a method so i can call it from avery were
+    protected function properties(){
+
+
+        $properties = array();
+        foreach (static::$db_table_filds as $db_field){
+            if (property_exists($this, $db_field)){
+                $properties[$db_field] = $this->$db_field;
+            }
+
+        }
+
+        return $properties;
+
+    }
+
+
 
 
 

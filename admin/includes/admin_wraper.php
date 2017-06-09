@@ -57,6 +57,12 @@
             $user->delete();*/
 
 
+            $user = new Users();
+            $user->username = "voutsaridis";
+
+            $user->save();
+
+
 
 
 
@@ -68,11 +74,11 @@
             //then i call the update method or delete
             $user->save();*/
 
-            $user = Users::find_all();
+           /* $user = Users::find_all();
             foreach ($user as $user){
                 echo "The user name is: ".$user->username;
                 echo " The password is: ".$user->password."<br>";
-            }
+            }*/
 
 
             ?>
