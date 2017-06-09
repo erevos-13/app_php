@@ -7,7 +7,7 @@
  */
 
 
-class Users  {
+class Users extends Db_object {
     //i make aprotected statid var for the table in databases
     protected static   $db_table = "users";
     //here i make a var array so i can call an array for every fild
@@ -20,35 +20,8 @@ class Users  {
 
 
 
-    /**
-     * @return mixed
-     */
-    public static function find_all_users(){
-
-        return self::find_this_query("SELECT * FROM users");
 
 
-
-    }
-
-
-    public static function find_id_users($id){
-        global $databases;
-
-        /*$set_result_id =self::find_this_query("SELECT * FROM users WHERE id = $id");
-        return $set_result_id;*/
-        global $databases;
-        $the_result_array = self::find_this_query("SELECT * FROM users");
-
-        return !empty($the_result_array)? array_shift($the_result_array):false;
-
-
-
-
-
-
-
-    }
 
 
     public static function find_this_query($sql){
@@ -71,7 +44,7 @@ class Users  {
         $username = $databases->escape_string($username);
         $password = $databases->escape_string($password);
 
-        $sql = "SELECT * FROM users WHERE ";
+        $sql = "SELECT * FROM ".self::$db_table." WHERE ";
         $sql .= "username = '{$username}' ";
         $sql .= "AND password = '{$password}' ";
         $sql .= "LIMIT 1 ";
@@ -132,6 +105,25 @@ class Users  {
 
     }
 
+    //this function is going to clean the
+    protected function clean_properties(){
+        global $databases;
+
+
+        $clean_properties = array();
+
+        foreach ($this->properties() as $key => $value){
+            $clean_properties[$key] = $databases->escape_string($value);
+        }
+
+        return $clean_properties;
+
+
+    }
+
+
+
+
     //create a function tha detect if user exist
     public function save(){
 
@@ -147,13 +139,13 @@ class Users  {
     public function create( ){
         global $databases;
 
-        $properties = $this->properties();
+        $properties = $this->clean_properties();
 
         //values for users
-        $userName = $databases->escape_string($this->username);
+        /*$userName = $databases->escape_string($this->username);
         $userPass = $databases->escape_string($this->password);
         $userFisrt = $databases->escape_string($this->first_name);
-        $usersLast = $databases->escape_string($this->last_name);
+        $usersLast = $databases->escape_string($this->last_name);*/
 
         $sql = "INSERT INTO ".self::$db_table." (". implode("," , array_keys($properties))         .")";
         $sql .= "VALUES ('".
@@ -175,13 +167,25 @@ class Users  {
     public function update(){
         global $databases;
 
+
+        $properties = $this->clean_properties();
+
+        $properties_pair = array();
+
+        foreach ($properties as $key => $value){
+            $properties_pair[] = "{$key}= '{$value}'     ";
+        }
+
+
+
+
         $userName = $databases->escape_string($this->username);
         $userPass = $databases->escape_string($this->password);
         $userFirst = $databases->escape_string($this->first_name);
         $userLast = $databases->escape_string($this->last_name);
         $userId = $databases->escape_string($this->id);
 
-        $sql = "UPDATE ".self::$db_table." SET username='{$userName}', password='{$userPass}' ,first_name='{$userFirst}',last_name='{$userLast}' WHERE id={$userId}";
+        $sql = "UPDATE ".self::$db_table." SET ".implode(",",$properties_pair) ." WHERE id={$userId}";
 
         $databases->query($sql);
 
