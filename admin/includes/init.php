@@ -8,11 +8,16 @@
 
 // this the include the files
 
+defined("orfeas") ? null  : define('orfeas', DIRECTORY_SEPARATOR) ;
+
+defined('SITE_ROOT') ? null : define('SITE_ROOT', orfeas. 'var'.orfeas.'www'.orfeas.'html'.orfeas.'udemy'.orfeas.'app'.orfeas.'app'.orfeas.'app_php');
+
+defined('INCLUDES_PATH') ? null :define('INCLUDES_PATH', SITE_ROOT.orfeas.'admin'.orfeas.'includes');
 
 
 require_once "session.php";
 require_once "db_object.php";
-require_once "photos.php";
+require_once "Photos.php";
 require_once "new_config.php";
 require_once "database.php";
 require_once "user.php";

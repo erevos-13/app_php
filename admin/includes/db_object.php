@@ -8,12 +8,27 @@
  */
 class Db_object
 {
+
+
     public static function find_all(){
 
         return static::find_this_query("SELECT * FROM ".static::$db_table." ");
 
 
 
+    }
+    public static function find_this_query($sql){
+        global $databases;
+        $rerutn_set = $databases->query($sql);
+        $the_object_array = array();
+
+        while ($row = mysqli_fetch_array($rerutn_set)){
+
+            $the_object_array[]= self::instantation($row);
+
+        }
+
+        return $the_object_array;
     }
 
 
@@ -82,24 +97,17 @@ class Db_object
     }
 
 
-
     public function create( ){
         global $databases;
 
         $properties = $this->clean_properties();
 
-        //values for users
-        /*$userName = $databases->escape_string($this->username);
-        $userPass = $databases->escape_string($this->password);
-        $userFisrt = $databases->escape_string($this->first_name);
-        $usersLast = $databases->escape_string($this->last_name);*/
 
-        $sql = "INSERT INTO ".static::$db_table." (". implode("," , array_keys($properties))         .")";
-        $sql .= "VALUES ('".
-
-            implode("','", array_values($properties))
-
-            ."')";
+        $sql = "INSERT INTO " .static::$db_table. " (";
+        $sql.= implode(", " , array_keys($properties));
+         $sql .= " ) VALUES  ('";
+         $sql .= implode("', '", array_values($properties));
+         $sql .= "')";
 
         if ($databases->query($sql)){
             $this->id = $databases->the_insert_id();
@@ -120,7 +128,7 @@ class Db_object
         $properties_pair = array();
 
         foreach ($properties as $key => $value){
-            $properties_pair[] = "{$key}= '{$value}'     ";
+            $properties_pair[] = " {$key} = ' {$value} '";
         }
 
 
@@ -174,7 +182,7 @@ class Db_object
 
 
         $properties = array();
-        foreach (static::$db_table_filds as $db_field){
+        foreach (static::$db_table_fields as $db_field){
             if (property_exists($this, $db_field)){
                 $properties[$db_field] = $this->$db_field;
             }

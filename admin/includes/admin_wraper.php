@@ -35,9 +35,7 @@
             }
 
 
-            */?>
-
-            <?php
+            */
 
             /*$result_id = Users::find_id_users(1);
             echo  $result_id->username;
@@ -57,14 +55,22 @@
             $user->delete();*/
 
 
-            $user = new Users();
+            /*$user = new Users();
             $user->username = "voutsaridis";
 
-            $user->save();
+            $user->save();*/
 
+           /* $photos = Photos::find_all();
+            foreach ($photos as $photo){
+                echo $photo->title;
 
+            }*/
 
+            /*$photos = new Photos();
+            $photos->size = 20;
+            $photos->create();*/
 
+            echo INCLUDES_PATH;
 
 
             /*$user = new Users();
@@ -98,3 +104,4 @@
 
 </div>
 <!-- /.container-fluid -->
+
