@@ -134,10 +134,10 @@ class Db_object
 
 
 
-        $userName = $databases->escape_string($this->username);
+        /*$userName = $databases->escape_string($this->username);
         $userPass = $databases->escape_string($this->password);
         $userFirst = $databases->escape_string($this->first_name);
-        $userLast = $databases->escape_string($this->last_name);
+        $userLast = $databases->escape_string($this->last_name);*/
         $userId = $databases->escape_string($this->id);
 
         $sql = "UPDATE ".static::$db_table." SET ".implode(",",$properties_pair) ." WHERE id={$userId}";

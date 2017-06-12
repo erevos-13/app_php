@@ -20,7 +20,7 @@ class Photos extends Db_object
     public $size;
 
     public $tmp_path;
-    public $upload_directory = "images";
+    public $upload_directory = "image";
     public $error = array();
     public $upload_error = array(
 
@@ -58,6 +58,53 @@ class Photos extends Db_object
 
 
 
+    }
+
+
+    //make a path for the picture do if i change the path is no break
+    public function picture_path(){
+        return $this->upload_directory.orfeas.$this->filename;
+    }
+
+
+    public function save(){
+
+        if ($this->photo_id){
+
+            $this->update();
+
+        }else{
+
+            if (!empty($this->error)){
+
+                return false;
+            }
+
+            if (empty($this->filename) || empty($this->tmp_path)){
+                $this->error[] = "the file was available";
+                return false;
+            }
+
+            $target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->upload_directory.orfeas.$this->filename;
+
+            if (file_exists($target_path)){
+                $this->error[] = "The file {$this->filename} already exist";
+                return false;
+            }
+
+           if ( move_uploaded_file($this->tmp_path ,$target_path)){
+                if ($this->tmp_path){
+                    unset($this->tmp_path);
+                    $this->create();
+                    return true;
+                }
+           }else{
+               $this->error[] = "the folder is not have permission";
+               return false;
+           }
+
+
+        }
     }
 
 

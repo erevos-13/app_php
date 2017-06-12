@@ -14,7 +14,7 @@
             <a href="comments.php"><i class="fa fa-fw fa-edit"></i> Comments</a>
         </li>
         <li>
-            <a href="Photos.php"><i class="fa fa-fw fa-camera-retro"></i>Photos</a>
+            <a href="photos.php"><i class="fa fa-fw fa-camera-retro"></i>Photos</a>
         </li>
 
     </ul>
