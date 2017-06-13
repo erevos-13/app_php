@@ -5,7 +5,7 @@
     $photos = Photos::find_all();
 
     $path = new Photos();
-   
+
 
 
 
