@@ -10,7 +10,7 @@
 
 defined("orfeas") ? null  : define('orfeas', DIRECTORY_SEPARATOR) ;
 
-defined('SITE_ROOT') ? null : define('SITE_ROOT', orfeas. 'var'.orfeas.'www'.orfeas.'html'.orfeas.'udemy'.orfeas.'app'.orfeas.'app'.orfeas.'app_php');
+defined('SITE_ROOT') ? null : define('SITE_ROOT', orfeas. 'var'.orfeas.'www'.orfeas.'html'.orfeas.'udemy'.orfeas.'app_php');
 
 defined('INCLUDES_PATH') ? null :define('INCLUDES_PATH', SITE_ROOT.orfeas.'admin'.orfeas.'includes');
 

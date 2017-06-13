@@ -55,7 +55,7 @@
             $user->delete();*/
 
 
-            /*$user = new Users();
+           /* $user = new Users();
             $user->username = "voutsaridis";
 
             $user->save();*/
@@ -66,11 +66,17 @@
 
             }*/
 
-            /*$photos = new Photos();
+           /* $photos = new Photos();
             $photos->size = 20;
             $photos->create();*/
 
-            echo INCLUDES_PATH;
+            //echo INCLUDES_PATH;
+
+             $photos = new Photos();
+            $photos->size = 50;
+            $photos->save();
+
+
 
 
             /*$user = new Users();

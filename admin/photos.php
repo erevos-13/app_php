@@ -4,6 +4,8 @@
 <?php
     $photos = Photos::find_all();
 
+    $path = new Photos();
+   
 
 
 
@@ -52,7 +54,10 @@
 
 
                                 <tr>
-                                    <td><a><img src="<?php echo  $photo->picture_path(); ?>" height="62" width="62"></a></td>
+                                    <td><a><img src="<?php echo  $photo-> ?>" height="62" width="62"></a>
+
+                                    </td>
+
                                     <td><?php echo $photo->filename; ?></td>
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>
