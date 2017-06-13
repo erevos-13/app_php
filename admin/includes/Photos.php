@@ -12,7 +12,7 @@ class Photos extends Db_object
     protected static   $db_table = "photos";
     //here i make a var array so i can call an array for every field
     protected static   $db_table_fields = array('title', 'description','filename', 'type', 'size');
-    public $photo_id;
+    public $id;
     public $title;
     public $description;
     public $filename;
@@ -63,13 +63,14 @@ class Photos extends Db_object
 
     //make a path for the picture do if i change the path is no break
     public function picture_path(){
-        return $this->upload_directory.orfeas.$this->filename;
+        return "/includes/".orfeas.$this->upload_directory.orfeas.$this->filename;
+
     }
 
 
     public function save(){
 
-        if ($this->photo_id){
+        if ($this->id){
 
             $this->update();
 
@@ -107,6 +108,16 @@ class Photos extends Db_object
         }
     }
 
+    public function delete_photo($id){
+        if ($this->delete($id)){
+            $target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->picture_path();
+            return unlink($target_path) ? true : false;
 
 
-}
+        }else{
+            return false;
+        }
+    }
+
+
+}//End Of Class

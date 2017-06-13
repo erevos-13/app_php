@@ -37,9 +37,8 @@
 
             */
 
-            /*$result_id = Users::find_id_users(1);
-            echo  $result_id->username;
-            print_r($_SESSION);*/
+           $id = Photos::find_id(2);
+           echo  $id->size;
 
             /*$user = new Users();
 
@@ -59,8 +58,8 @@
             $user->username = "voutsaridis";
 
             $user->save();*/
-
-           /* $photos = Photos::find_all();
+/*
+            $photos = Photos::find_all();
             foreach ($photos as $photo){
                 echo $photo->title;
 
@@ -70,23 +69,23 @@
             $photos->size = 20;
             $photos->create();*/
 
-            //echo INCLUDES_PATH;
+//            echo INCLUDES_PATH;
 
-             $photos = new Photos();
+            /* $photos = new Photos();
             $photos->size = 50;
-            $photos->save();
+            $photos->save();*/
 
 
 
 
-            /*$user = new Users();
+           /* $user = new Users();
             $user->id = 3;
             $user->last_name = "arvaniti";
 
             //then i call the update method or delete
             $user->save();*/
 
-           /* $user = Users::find_all();
+            /*$user = Users::find_all();
             foreach ($user as $user){
                 echo "The user name is: ".$user->username;
                 echo " The password is: ".$user->password."<br>";
