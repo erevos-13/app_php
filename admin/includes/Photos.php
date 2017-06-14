@@ -11,11 +11,13 @@ class Photos extends Db_object
     //i make a protected static var for the table in databases
     protected static   $db_table = "photos";
     //here i make a var array so i can call an array for every field
-    protected static   $db_table_fields = array('title', 'description','filename', 'type', 'size');
+    protected static   $db_table_fields = array('title','caption', 'description','filename','alternate_text', 'type', 'size');
     public $id;
     public $title;
+    public $caption;
     public $description;
     public $filename;
+    public $alternate_text;
     public $type;
     public $size;
 
@@ -63,7 +65,7 @@ class Photos extends Db_object
 
     //make a path for the picture do if i change the path is no break
     public function picture_path(){
-        return "/includes/".orfeas.$this->upload_directory.orfeas.$this->filename;
+        return "includes/".orfeas.$this->upload_directory.orfeas.$this->filename;
 
     }
 

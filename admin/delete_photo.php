@@ -11,19 +11,20 @@ include "includes/init.php";
 if(!$session->is_signed_in()){redirect("login.php");}
 
 
-if (empty($_GET['photo_id'])){
+if (empty($_GET['id'])){
 
-    redirect("../photo.php");
+    redirect("photo.php");
 }
 
 
-$photo = Photos::find_id($_GET['photo_id']);
+$photo = Photos::find_id($_GET['id']);
 
 if ($photo){
     //call the delete method
-    $photo->delete_photo($photo->id);
+    $photo->delete_photo();
+    redirect("photos.php");
 
 
 }else{
-    redirect("../photo.php");
+    redirect("photo.php");
 }
