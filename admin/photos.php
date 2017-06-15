@@ -54,7 +54,7 @@
 
 
                                 <tr>
-                                    <td><a><img src="<?php echo  $photo->picture_path(); ?>" height="62" width="62"></a>
+                                    <td><a><img class="admin-photo-thumbnail" src="<?php echo  $photo->picture_path(); ?>" ></a>
 
                                         <div class="pictures_link">
                                             <a href="delete_photo.php?id=<?php echo $photo->id; ?>" >Delete</a>

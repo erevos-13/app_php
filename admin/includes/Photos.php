@@ -65,7 +65,7 @@ class Photos extends Db_object
 
     //make a path for the picture do if i change the path is no break
     public function picture_path(){
-        return "includes/".orfeas.$this->upload_directory.orfeas.$this->filename;
+        return "includes".orfeas.$this->upload_directory.orfeas.$this->filename;
 
     }
 

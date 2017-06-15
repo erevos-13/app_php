@@ -37,8 +37,11 @@
 
             */
 
-           $id = Photos::find_id(2);
-           echo  $id->size;
+           /*$id = Photos::find_id(2);
+           echo  $id->size;*/
+
+           $user = Users::find_all();
+           echo $user->username;
 
             /*$user = new Users();
 
