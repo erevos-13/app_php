@@ -110,8 +110,8 @@ class Photos extends Db_object
         }
     }
 
-    public function delete_photo($id){
-        if ($this->delete($id)){
+    public function delete_photo(){
+        if ($this->delete()){
             $target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->picture_path();
             return unlink($target_path) ? true : false;
 

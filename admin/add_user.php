@@ -12,8 +12,7 @@ include("includes/header.php");
 $user = new Users();
 
        if (isset($_POST['create'])){
-           //set the date
-          $date =  date('Y-m-d H:i:s');
+
 
           if ($user){
               $user->username =  $_POST['username'];
