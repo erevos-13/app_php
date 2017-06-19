@@ -37,7 +37,7 @@ I will happy is some one would like to Contribute.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [Web Page](https://github.com/erevos-13)
+* **Orfeas VOutsaridis** - *Initial work* - [Web Page](https://github.com/erevos-13)
 
 
 
