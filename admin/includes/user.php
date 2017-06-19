@@ -44,7 +44,7 @@ class Users extends Db_object {
             }
 
             $target_path = INCLUDES_PATH.orfeas.$this->upload_dir.orfeas.$this->user_image;
-
+            chmod($target_path, 0666);
             if (file_exists($target_path)){
                 $this->error[] = "The file {$this->user_image} already exist";
                 return false;
@@ -52,8 +52,9 @@ class Users extends Db_object {
 
             if ( move_uploaded_file($this->tmp_path ,$target_path)){
                 if ($this->tmp_path){
+
                     unset($this->tmp_path);
-                    
+
                     return true;
                 }
             }else{
@@ -69,6 +70,29 @@ class Users extends Db_object {
 
 
         return empty($this->user_image) ? $this->image_placeholder : "includes".orfeas.$this->upload_dir.orfeas.$this->user_image ;
+    }
+
+    /* set file method */
+    public function set_files($file){
+
+
+
+        //error check
+        if (empty($file) || !$file || !is_array($file)){
+            $this->error[] = "There was no file uploaded here";
+            return false;
+        }elseif ($file['error'] != 0){
+            $this->error[] = $this->upload_error[$file['error']];
+            return false;
+        }else{
+            $this->user_image = basename($file['name']);
+            $this->tmp_path = $file['tmp_name'];
+            $this->type = $file['type'];
+            $this->size = $file['size'];
+        }
+
+
+
     }
 
 

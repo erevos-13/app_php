@@ -23,28 +23,7 @@ class Db_object
     );
 
 
-    /* set file method */
-    public function set_files($file){
 
-
-
-        //error check
-        if (empty($file) || !$file || !is_array($file)){
-            $this->error[] = "There was no file uploaded here";
-            return false;
-        }elseif ($file['error'] != 0){
-            $this->error[] = $this->upload_error[$file['error']];
-            return false;
-        }else{
-            $this->user_image = basename($file['name']);
-            $this->tmp_path = $file['tmp_name'];
-            $this->type = $file['type'];
-            $this->size = $file['size'];
-        }
-
-
-
-    }
 
 
 

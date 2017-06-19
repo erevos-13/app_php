@@ -90,6 +90,7 @@ class Photos extends Db_object
 
             //$target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->upload_directory.orfeas.$this->filename;
             $target_path = "/var/www/html/udemy/app_php/admin/includes/image/".$this->filename;
+            chmod($target_path, 0666);
             if (file_exists($target_path)){
                 $this->error[] = "The file {$this->filename} already exist";
                 return false;
@@ -97,7 +98,9 @@ class Photos extends Db_object
 
            if ( move_uploaded_file($this->tmp_path ,$target_path)){
                 if ($this->tmp_path){
+
                     unset($this->tmp_path);
+
                     $this->create();
                     return true;
                 }
