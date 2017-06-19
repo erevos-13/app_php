@@ -31,7 +31,7 @@ http://localhost/folder_name_that_you_store/app_php/
 
 ## Contributing
 
-I will happy is some one would like to Contribute.
+I will happy if some one would like to Contribute.
 
 
 
