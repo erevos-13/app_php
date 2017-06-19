@@ -12,5 +12,6 @@ This is an app make for users interaction
 
 * List of item of the project.
     -[x] The login page and the logout.
-    -[x] The gallery page, is the page that you can upload photos (GRUD)
-    -[x] The add user (GRUD)
+    -[x] The gallery page, is the page that you can upload photos (GRUD).
+    -[x] The add user (GRUD).
+    -[ ] Session for massage.
