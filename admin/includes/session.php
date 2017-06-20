@@ -8,13 +8,26 @@ class Session {
     private $signed_in = false;
     public $user_id; //use the id for do thinks
     public $message;
+    public $count;
 
     //every time i run the app is running this
     function __construct()
     {
         session_start();
+        $this->visitor_count();
         $this->check_the_login();
         $this->check_message();
+    }
+
+    public function visitor_count(){
+        if (isset($_SESSION['count'])){
+
+            return $this->count = $_SESSION['count']++;
+
+        }else{
+            return $_SESSION['count']= 1;
+        }
+
     }
 
     //getter method is the method to call the private

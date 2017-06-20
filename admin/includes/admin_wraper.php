@@ -5,107 +5,116 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Blank Page
-                <small>Subheading</small>
+                Admin
+                <small>Dashboard</small>
             </h1>
 
-            <?php
-            //i call the class
-            // here is if i would like to instasiet
-            // $user = new Users();
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $session->count; ?></div>
+                                    <div>New Views</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-            /*$result_set = Users::find_all_users();
-
-            while($row = mysqli_fetch_array($result_set)){
-
-                echo $row['username']. "<br>";
-
-            }*/
-
-
-            /*$result_id = Users::find_id_users(1);
-            $row = mysqli_fetch_array($result_id);
-            $user = Users::instantation($row);
-            echo $user->password;*/
-
-            /*$users = Users::find_all_users();
-
-            foreach ($users as $user){
-                echo $user->username;
-            }
-
-
-            */
-
-           /*$id = Photos::find_id(2);
-           echo  $id->size;*/
-
-           $user = Users::find_all();
-           echo $user->username;
-
-            /*$user = new Users();
-
-            $user->username = "maria";
-            $user->password = "erevos13";
-            $user->first_name = "mairy";
-            $user->last_name = "arvaniti";
-
-            $user->create();*/
-
-            /*//i have to call first the user id
-            $user = Users::find_id_users(6);
-            $user->delete();*/
-
-
-           /* $user = new Users();
-            $user->username = "voutsaridis";
-
-            $user->save();*/
-/*
-            $photos = Photos::find_all();
-            foreach ($photos as $photo){
-                echo $photo->title;
-
-            }*/
-
-           /* $photos = new Photos();
-            $photos->size = 20;
-            $photos->create();*/
-
-//            echo INCLUDES_PATH;
-
-            /* $photos = new Photos();
-            $photos->size = 50;
-            $photos->save();*/
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-photo fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo Photos::count_all(); ?></div>
+                                    <div>Photos</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Photos in Gallery</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
 
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-user fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo Users::count_all(); ?></div>
+
+                                    <div>Users</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Users</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo Comment::count_all(); ?></div>
+                                    <div>Comments</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Comments</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
 
-           /* $user = new Users();
-            $user->id = 3;
-            $user->last_name = "arvaniti";
+            </div> <!--First Row-->
 
-            //then i call the update method or delete
-            $user->save();*/
+            <div class="row">
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
 
-            /*$user = Users::find_all();
-            foreach ($user as $user){
-                echo "The user name is: ".$user->username;
-                echo " The password is: ".$user->password."<br>";
-            }*/
+            </div>
 
 
-            ?>
 
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>  <a href="../index.php">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> Blank Page
-                </li>
-            </ol>
         </div>
     </div>
     <!-- /.row -->

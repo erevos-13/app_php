@@ -36,7 +36,9 @@
     <link  href="css/styles.css" rel="stylesheet" >
 
     <!-- end custom css -->
-
+    <!-- Google API -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- end Google API -->
 </head>
 
 <body>

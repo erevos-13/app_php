@@ -44,7 +44,7 @@ class Users extends Db_object {
             }
 
             $target_path = INCLUDES_PATH.orfeas.$this->upload_dir.orfeas.$this->user_image;
-            chmod($target_path, 0666);
+
             if (file_exists($target_path)){
                 $this->error[] = "The file {$this->user_image} already exist";
                 return false;
@@ -54,7 +54,7 @@ class Users extends Db_object {
                 if ($this->tmp_path){
 
                     unset($this->tmp_path);
-
+                    $this->create();
                     return true;
                 }
             }else{

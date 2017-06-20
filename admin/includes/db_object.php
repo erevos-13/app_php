@@ -114,17 +114,18 @@ class Db_object
     }
 
 
-    public function create( ){
+    public function create(){
         global $databases;
 
         $properties = $this->clean_properties();
+        $sql = "INSERT INTO ". static::$db_table. " (".implode(", " , array_keys($properties))." ) VALUES  ('".implode("', '", array_values($properties))."')";
 
 
-        $sql = "INSERT INTO " .static::$db_table. " (";
+       /* $sql = "INSERT INTO ". static::$db_table. " ( ";
         $sql.= implode(", " , array_keys($properties));
          $sql .= " ) VALUES  ('";
          $sql .= implode("', '", array_values($properties));
-         $sql .= "')";
+         $sql .= "')";*/
 
         if ($databases->query($sql)){
             $this->id = $databases->the_insert_id();
@@ -209,6 +210,21 @@ class Db_object
         return $properties;
 
     }
+
+    public static function count_all(){
+        global $databases;
+
+        $sql= "SELECT COUNT(*) FROM ".static::$db_table;
+        $result_set = $databases->query($sql);
+        $row = mysqli_fetch_array($result_set);
+
+        //so to take only the number i need to take tha firsth
+        return array_shift($row);
+
+
+    }
+
+
 
 
 

@@ -45,7 +45,8 @@
                                 <th>Id</th>
                                 <th>File name</th>
                                 <th>Size </th>
-                                
+                                <th>Comments </th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -62,6 +63,7 @@
                                             <a href="edit_photo.php?id=<?php echo $photo->id; ?>" >Edit</a>
                                             <a href="../photo.php?id=<?php echo $photo->id; ?>" >View</a>
 
+
                                         </div>
 
                                     </td>
@@ -69,6 +71,20 @@
                                     <td><?php echo $photo->id; ?></td>
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>
+
+                                    <td>
+                                        <a href="photo_comments.php?id=<?php echo $photo->id; ?>">
+                                        <?php
+
+                                        $comment  = Comment::find_the_comment($photo->id);
+
+                                        //count all object (count all the comments)
+                                        echo count($comment) ;
+
+                                        ?>
+                                            - Comment</a>
+
+                                    </td>
 
                                 </tr>
                             <?php endforeach; ?>

@@ -5,7 +5,7 @@
  * Date: 16/6/2017
  * Time: 9:35 μμ
  */
-include("includes/header.php");
+ include("includes/header.php");
  if (!$session->is_signed_in()) { redirect("login.php");  }
 
 

@@ -12,6 +12,33 @@
 
   <script src="js/scripts.js"></script>
 
+  <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+          var data = google.visualization.arrayToDataTable([
+              ['Task', 'Hours per Day'],
+              ['View Page',     <?php echo $session->count; ?>],
+              ['Users',      <?php echo Users::count_all(); ?>],
+              ['Photos',  <?php echo Photos::count_all(); ?>],
+              ['Comments', <?php echo Comment::count_all(); ?>]
+
+          ]);
+
+          var options = {
+              pieSliceText:'label',
+              title: 'My Daily Activities',
+              backgroundColor:'transparent'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+          chart.draw(data, options);
+      }
+  </script>
+
 
   </body>
 

@@ -36,7 +36,6 @@ $comments = Comment::find_all();
                         comments
 
                     </h1>
-                    <a href="add_user.php" class="btn btn-primary">Add User</a>
 
                     <div class="col-md-12">
                         <table class="table table-hover">
@@ -60,7 +59,7 @@ $comments = Comment::find_all();
 
                                     <td><?php echo $comment->author; ?>
                                         <div class="actions_link">
-                                            <a href="delete_comment.php?id=<?php echo $comment->id; ?>" >Delete</a>
+                                            <a href="delete_comment_photo.php?id=<?php echo $comment->id; ?>" >Delete</a>
                                             <a href="edit_comment.php?id=<?php echo $comment->id; ?>" >Edit</a>
 
 
