@@ -20,7 +20,7 @@ $user = Comment::find_id($_GET['id']);
 if ($user){
     //call the delete method
     $user->delete();
-    redirect("photo_comments.php?id={$comment->photo_id}");
+    redirect("comments.php?id={$comment->photo_id}");
 
 
 }else{

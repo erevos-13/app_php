@@ -55,7 +55,7 @@ class Db_object
         /*$set_result_id =static::find_this_query("SELECT * FROM users WHERE id = $id");
         return $set_result_id;*/
         global $databases;
-        $the_result_array = static::find_this_query("SELECT * FROM ".static::$db_table." ");
+        $the_result_array = static::find_this_query("SELECT * FROM ".static::$db_table." WHERE id={$id}");
 
 
         return !empty($the_result_array)? array_shift($the_result_array):false;
