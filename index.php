@@ -2,6 +2,11 @@
 
 <?php
 
+    $page= !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    $items_per_page = 2;
+    $items_total_count = Photos::count_all();
+
     $photos = Photos::find_all();
 
 
