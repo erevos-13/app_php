@@ -2,3 +2,10 @@
     width: 200px;
     height:150px !important;
 }
+
+/******* Pagination ***********/
+
+.current_page{
+    background-color: #101010 ;
+    color: #fff;
+}

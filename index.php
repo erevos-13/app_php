@@ -58,11 +58,19 @@
 
         </div>
 <div class="row" >
-    <ul class="pager" >
+    <ul class="pagination" >
         <?php
         if ($paginate->page_total() > 1){
             if ($paginate->has_next()){
               echo "<li class='next' ><a href='index.php?page={$paginate->next()}' >Next</a></li>";
+            }
+        }
+
+        for ($i=1; $i <= $paginate->page_total(); $i++ ){
+            if ($i == $paginate->current_page){
+                echo "<li ><a style='background-color: #080808; color: white;' href='index.php?page={$i}'>{$i}</a></li>";
+            }else{
+                echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
             }
         }
 
