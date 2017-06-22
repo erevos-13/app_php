@@ -23,4 +23,5 @@ require_once "database.php";
 require_once "user.php";
 require_once "Comment.php";
 require_once "function.php"; //this the way that has only going to use the file once in the app.
+require_once "paginate.php";
 
