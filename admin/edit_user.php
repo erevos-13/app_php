@@ -1,4 +1,5 @@
 <?php include("includes/header.php"); ?>
+<?php include "includes/modal.php"; ?>
 
 
 <?php if (!$session->is_signed_in()) { redirect("login.php");  } ?>
@@ -60,6 +61,9 @@ $user = Users::find_id($_GET['id']);
 
 
 
+
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" xmlns="http://www.w3.org/1999/html">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -92,7 +96,7 @@ $user = Users::find_id($_GET['id']);
                     <form action="" method="post" enctype="multipart/form-data">
 
                         <div class="col-md-6">
-                            <img class="img-responsive" src="<?php echo $user->image_path_placeholder(); ?>" alt="">
+                            <a href="#" data-toggle="modal" data-target="#photo-modal" ><img class="img-responsive" src="<?php echo $user->image_path_placeholder(); ?>" alt=""></a>
                         </div>
 
 
@@ -133,7 +137,8 @@ $user = Users::find_id($_GET['id']);
 
                         </div>
                         <div class="form-group pull-right ">
-                            <button class="btn btn-danger btn-lg " ><a  href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a></button>
+                            <button class="btn btn-danger btn-lg " >
+                                <a id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a></button>
 
                             <input type="submit" name="update"  class="btn btn-primary btn-lg "  value="Update">
                         </div>
