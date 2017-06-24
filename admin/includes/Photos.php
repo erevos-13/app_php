@@ -9,9 +9,9 @@
 class Photos extends Db_object
 {
     //i make a protected static var for the table in databases
-    protected static   $db_table = "photos";
+    protected static $db_table = "photos";
     //here i make a var array so i can call an array for every field
-    protected static   $db_table_fields = array('title','caption', 'description','filename','alternate_text', 'type', 'size');
+    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size');
     public $id;
     public $title;
     public $caption;
@@ -40,18 +40,18 @@ class Photos extends Db_object
 
     //This is passing $FILES['uploaded_file'] as an argument
 
-    public function set_files($file){
-
+    public function set_files($file)
+    {
 
 
         //error check
-        if (empty($file) || !$file || !is_array($file)){
+        if (empty($file) || !$file || !is_array($file)) {
             $this->error[] = "There was no file uploaded here";
             return false;
-        }elseif ($file['error'] != 0){
+        } elseif ($file['error'] != 0) {
             $this->error[] = $this->upload_error[$file['error']];
             return false;
-        }else{
+        } else {
             $this->filename = basename($file['name']);
             $this->tmp_path = $file['tmp_name'];
             $this->type = $file['type'];
@@ -59,70 +59,86 @@ class Photos extends Db_object
         }
 
 
-
     }
 
 
     //make a path for the picture do if i change the path is no break
-    public function picture_path(){
-        return "includes".orfeas.$this->upload_directory.orfeas.$this->filename;
+    public function picture_path()
+    {
+        return "includes" . orfeas . $this->upload_directory . orfeas . $this->filename;
 
     }
 
 
-    public function save(){
+    public function save()
+    {
 
-        if ($this->id){
+        if ($this->id) {
 
             $this->update();
 
-        }else{
+        } else {
 
-            if (!empty($this->error)){
+            if (!empty($this->error)) {
 
                 return false;
             }
 
-            if (empty($this->filename) || empty($this->tmp_path)){
+            if (empty($this->filename) || empty($this->tmp_path)) {
                 $this->error[] = "the file was available";
                 return false;
             }
 
             //$target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->upload_directory.orfeas.$this->filename;
-            $target_path = "/var/www/html/udemy/app_php/admin/includes/image/".$this->filename;
+            $target_path = "/var/www/html/udemy/app_php/admin/includes/image/" . $this->filename;
             chmod($target_path, 0666);
-            if (file_exists($target_path)){
+            if (file_exists($target_path)) {
                 $this->error[] = "The file {$this->filename} already exist";
                 return false;
             }
 
-           if ( move_uploaded_file($this->tmp_path ,$target_path)){
-                if ($this->tmp_path){
+            if (move_uploaded_file($this->tmp_path, $target_path)) {
+                if ($this->tmp_path) {
 
                     unset($this->tmp_path);
 
                     $this->create();
                     return true;
                 }
-           }else{
-               $this->error[] = "the folder is not have permission";
-               return false;
-           }
+            } else {
+                $this->error[] = "the folder is not have permission";
+                return false;
+            }
 
 
         }
     }
 
-    public function delete_photo(){
-        if ($this->delete()){
-            $target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->picture_path();
+    public function delete_photo()
+    {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT . orfeas . 'admin' . orfeas . $this->picture_path();
             return unlink($target_path) ? true : false;
 
 
-        }else{
+        } else {
             return false;
         }
+
+
     }
+
+
+ public static function display_sidebar_data($photo_id){
+
+        $photo = Photos::find_id($photo_id);
+
+        $output = "<a class='thumbnail' href='#'>< img width='100' scr='{$photo->pictere_path()}'> <p>{$photo->filename}</p><p>{$photo->type}</p><p>{$photo->size}</p> ";
+        echo $output;
+
+ }
+
+
 
 
 }//End Of Class

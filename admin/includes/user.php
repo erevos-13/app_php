@@ -123,6 +123,28 @@ class Users extends Db_object {
 
     }
 
+    public function ajax_save_user_image($user_image, $user_id){
+
+        global $databases;
+
+        $user_image = $databases->escape_string($user_image);
+        $user_id = $databases->escape_string($user_id);
+
+        $this->user_image = $user_image;
+        $this->id         = $user_id;
+
+        $sql = "UPDATE ". self::$db_table . " SET user_image = '{$this->user_image}' ";
+         $sql.= " WHERE id = {$this->id}";
+         $update_image = $databases->query($sql);
+
+         echo $this->image_path_placeholder();
+
+
+
+    }
+
+
+
 
 
 

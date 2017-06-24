@@ -89,17 +89,14 @@ $user = Users::find_id($_GET['id']);
                     </h1>
 
 
-
-
-                    <!- form tag -->
-                    <!--when i do not put the action is like i say that is in this file.-->
-                    <form action="" method="post" enctype="multipart/form-data">
-
-                        <div class="col-md-6">
+                        <div class="col-md-6 user_image_box">
                             <a href="#" data-toggle="modal" data-target="#photo-modal" ><img class="img-responsive" src="<?php echo $user->image_path_placeholder(); ?>" alt=""></a>
                         </div>
 
+                    <!- form tag -->
+                    <!--when i do not put the action is like i say that is in this file.-->
 
+                    <form action="" method="post" enctype="multipart/form-data">
 
 
                         <div class="col-md-6">
