@@ -1,6 +1,7 @@
 # App php user friendly 
 
 In this project i made for user login and upload image for display to others.
+It is a gallery system.
 
 ## Getting Started
 
