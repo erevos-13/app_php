@@ -12,6 +12,9 @@ $(document).ready(function () {
     var photo_id;
 
 
+
+
+
     $(".modal_thumbnails").click(function () {
 
         $("#set_user_image").prop('disabled',false);
@@ -73,6 +76,26 @@ $(document).ready(function () {
 
 
     tinymce.init({ selector:'textarea' });
+
+
+    /********* Edit photo side bar ***********/
+
+    $(".info-box-header").click(function () {
+
+        $(".inside").slideToggle("slow");
+
+        $("#toggle").toggleClass("glyphicon-menu-down glyphicon , glyphicon-menu-up glyphicon");
+    });
+
+    /********* Delete function ***************/
+
+    $(".delete_link").click(function () {
+
+       return confirm("Are you sure want to delete that item");
+
+
+
+    });
 
 
 });

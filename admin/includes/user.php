@@ -72,7 +72,7 @@ class Users extends Db_object {
         return empty($this->user_image) ? $this->image_placeholder : "includes".orfeas.$this->upload_dir.orfeas.$this->user_image ;
     }
 
-    /* set file method */
+
     public function set_files($file){
 
 

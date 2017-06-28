@@ -22,7 +22,9 @@ $user = new Users();
 
               $user->set_files($_FILES['user_image']);
               $user->upload_photo();
+              $session->message("The user {$user->username} has been added");
               $user->save();
+              redirect("users.php");
           }
 
        }

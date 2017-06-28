@@ -27,6 +27,9 @@ class Db_object
 
 
 
+
+
+
     public static function find_all(){
 
         return static::find_this_query("SELECT * FROM ".static::$db_table." ");
@@ -150,15 +153,9 @@ class Db_object
         }
 
 
-
-
-        /*$userName = $databases->escape_string($this->username);
-        $userPass = $databases->escape_string($this->password);
-        $userFirst = $databases->escape_string($this->first_name);
-        $userLast = $databases->escape_string($this->last_name);*/
         $userId = $databases->escape_string($this->id);
 
-        $sql = "UPDATE ".static::$db_table." SET ".implode(",",$properties_pair) ." WHERE id={$userId}";
+        $sql = "UPDATE ".static::$db_table." SET ".implode(", ",$properties_pair) ." WHERE id={$userId}";
 
         $databases->query($sql);
 
@@ -220,6 +217,33 @@ class Db_object
 
         //so to take only the number i need to take tha firsth
         return array_shift($row);
+
+
+    }
+
+
+
+
+
+
+    public function delete_photo() {
+
+
+        if($this->delete()) {
+
+            $target_path = SITE_ROOT.orfeas. 'admin' . orfeas . $this->picture_path();
+
+            return unlink($target_path) ? true : false;
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
 
 
     }

@@ -60,11 +60,11 @@ $users = Users::find_all();
 
                                 <tr>
                                     <td><?php echo $user->id;?></td>
-                                    <td><a><img class="admin-photo-thumbnail user_image" src="<?php echo $user->image_path_placeholder(); ?>" ></a></td>
+                                    <td><img class="admin-photo-thumbnail user_image" src="<?php echo $user->image_path_placeholder(); ?>" ></td>
 
                                     <td><?php echo $user->username; ?>
                                         <div class="actions_link">
-                                            <a href="delete_user.php?id=<?php echo $user->id; ?>" >Delete</a>
+                                            <a class="delete_link" href="delete_user.php?id=<?php echo $user->id; ?>" >Delete</a>
                                             <a href="edit_user.php?id=<?php echo $user->id; ?>" >Edit</a>
 
 

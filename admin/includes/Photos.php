@@ -65,7 +65,7 @@ class Photos extends Db_object
     //make a path for the picture do if i change the path is no break
     public function picture_path()
     {
-        return "includes" . orfeas . $this->upload_directory . orfeas . $this->filename;
+        return "includes/image/".$this->filename;
 
     }
 
@@ -89,9 +89,9 @@ class Photos extends Db_object
                 return false;
             }
 
-            //$target_path = SITE_ROOT.orfeas.'admin'.orfeas.$this->upload_directory.orfeas.$this->filename;
-            $target_path = "/var/www/html/udemy/app_php/admin/includes/image/" . $this->filename;
-            chmod($target_path, 0666);
+
+            $target_path = "/var/www/html/udemy/app_php/admin/includes/image/".$this->filename;
+
             if (file_exists($target_path)) {
                 $this->error[] = "The file {$this->filename} already exist";
                 return false;
@@ -128,15 +128,27 @@ class Photos extends Db_object
 
     }
 
+    public function comments() {
+
+
+        return Comment::find_the_comment($this->id);
+
+
+    }
+
 
  public static function display_sidebar_data($photo_id){
 
         $photo = Photos::find_id($photo_id);
 
-        $output = "<a class='thumbnail' href='#'><img width='100' scr='{$photo->pictere_path()}' ></a>";
+        /*$output = "<a class='thumbnail' href='#'><img width='100' scr='{$photo->pictere_path()}' ></a>";
         $output .="<p>{$photo->filename}</p>";
         $output .= "<p>{$photo->type}</p>";
-        $output .= "<p>{$photo->size}</p>";
+        $output .= "<p>{$photo->size}</p>";*/
+     $output = "<a class='thumbnail' href='#'><img width='100' src='{$photo->picture_path()}' ></a> ";
+     $output .= "<p>{$photo->filename}</p>";
+     $output .= "<p>{$photo->type}</p>";
+     $output .= "<p>{$photo->size}</p>";
         echo $output;
 
  }
