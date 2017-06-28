@@ -29,12 +29,13 @@ $user = Users::find_id($_GET['id']);
 
                  $user->save();
                  redirect("users.php");
+                 $session->message("The user {$user->id} has been update");
              }else{
 
                  $user->set_files($_FILES['user_image']);
-                 $user->save_photo_user();
+                 $user->upload_photo();
                  $user->save();
-
+                 $session->message("The user has been update");
                  redirect("users.php");
 
 

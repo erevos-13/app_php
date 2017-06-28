@@ -117,7 +117,7 @@ class Photos extends Db_object
     public function delete_photo()
     {
         if ($this->delete()) {
-            $target_path = SITE_ROOT . orfeas . 'admin' . orfeas . $this->picture_path();
+            $target_path = SITE_ROOT . orfeas . 'admin' . orfeas .'includes'.orfeas.'image'.orfeas. $this->filename;
             return unlink($target_path) ? true : false;
 
 
@@ -133,7 +133,10 @@ class Photos extends Db_object
 
         $photo = Photos::find_id($photo_id);
 
-        $output = "<a class='thumbnail' href='#'>< img width='100' scr='{$photo->pictere_path()}'> <p>{$photo->filename}</p><p>{$photo->type}</p><p>{$photo->size}</p> ";
+        $output = "<a class='thumbnail' href='#'><img width='100' scr='{$photo->pictere_path()}' ></a>";
+        $output .="<p>{$photo->filename}</p>";
+        $output .= "<p>{$photo->type}</p>";
+        $output .= "<p>{$photo->size}</p>";
         echo $output;
 
  }

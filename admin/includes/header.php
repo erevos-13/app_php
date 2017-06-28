@@ -19,6 +19,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+
     <link href="css/sb-admin.css" rel="stylesheet">
 
 
@@ -33,6 +34,7 @@
     <![endif]-->
 
     <!-- Custom Css in -->
+    <link href="css/dropzone.css" rel="stylesheet">
     <link  href="css/styles.css" rel="stylesheet" >
 
     <!-- end custom css -->

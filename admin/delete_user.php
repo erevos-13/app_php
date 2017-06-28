@@ -19,11 +19,14 @@ $user = Users::find_id($_GET['id']);
 
 if ($user){
     //call the delete method
-    $user->delete();
+    $session->message("The {$user->id} user has been delete");
+    $user->delete_photo();
     redirect("users.php");
+
 
 
 }else{
     redirect("user.php");
 }
+
 

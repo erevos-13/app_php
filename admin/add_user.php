@@ -21,7 +21,8 @@ $user = new Users();
               $user->last_name = $_POST['last_name'];
 
               $user->set_files($_FILES['user_image']);
-              $user->save_photo_user();
+              $user->upload_photo();
+              $user->save();
           }
 
        }

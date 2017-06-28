@@ -50,6 +50,7 @@ $(document).ready(function () {
             url: "includes/ajax_code.php",
             data:{image_name: image_name, user_id: user_id},
             type:"POST",
+            contentType: 'application/json; charset=utf-8',
             success:function (data) {
                 if(!data.error){
 

@@ -36,6 +36,9 @@
                         Photos
                         <small>Subheading</small>
                     </h1>
+                    <div class="bg-success">
+                        <p><?php echo $message; ?></p>
+                    </div>
 
                     <div class="col-md-12">
                         <table class="table table-hover">

@@ -29,7 +29,7 @@ class Users extends Db_object {
 
 
 
-    public function save_photo_user(){
+    public function upload_photo(){
 
 
 
@@ -139,6 +139,22 @@ class Users extends Db_object {
 
          echo $this->image_path_placeholder();
 
+
+
+    }
+
+
+
+    public function delete_photo()
+    {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT . orfeas . 'admin' . orfeas .'includes'.orfeas.'image';
+            return unlink($target_path) ? true : false;
+
+
+        } else {
+            return false;
+        }
 
 
     }

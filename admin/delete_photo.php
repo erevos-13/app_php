@@ -22,6 +22,7 @@ $photo = Photos::find_id($_GET['id']);
 if ($photo){
     //call the delete method
     $photo->delete_photo();
+    $session->message("Delete photo");
     redirect("photos.php");
 
 

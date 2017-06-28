@@ -8,6 +8,7 @@
     <script src="js/bootstrap.min.js"></script>
 
   <!-- Text editor -->
+  <script src="js/dropzone.js"></script>
   <script src="js/scripts.js"></script>
 
   <script type="text/javascript">
