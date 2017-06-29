@@ -79,12 +79,6 @@ class Db_object
 
         $the_object = new $calling_class;
 
-        /*        $the_object->id = $result_user['id'];
-                $the_object->username = $result_user['username'];
-                $the_object->password = $result_user['password'];
-                $the_object->first_name = $result_user['first_name'];
-                $the_object->last_name = $result_user['last_name'];*/
-
         foreach ($result_user as $the_attribute => $value){
 
             if ($the_object->has_the_attribute($the_attribute)){
@@ -98,9 +92,9 @@ class Db_object
 
     private function has_the_attribute($the_attribute){
 
-        $object_properties = get_object_vars($this);
-        return array_key_exists($the_attribute, $object_properties);
-
+       /* $object_properties = get_object_vars($this);
+        return array_key_exists($the_attribute, $object_properties);*/
+        return property_exists($this, $the_attribute);
     }
 
 
@@ -121,7 +115,8 @@ class Db_object
         global $databases;
 
         $properties = $this->clean_properties();
-        $sql = "INSERT INTO ". static::$db_table. " (".implode(", " , array_keys($properties))." ) VALUES  ('".implode("', '", array_values($properties))."')";
+
+        $sql = "INSERT INTO ". static::$db_table. "(".implode(",", array_keys($properties))." )VALUES ('".implode("','", array_values($properties))."')";
 
 
        /* $sql = "INSERT INTO ". static::$db_table. " ( ";
@@ -149,7 +144,7 @@ class Db_object
         $properties_pair = array();
 
         foreach ($properties as $key => $value){
-            $properties_pair[] = " {$key} = ' {$value} '";
+            $properties_pair[] = " {$key} = '{$value}'";
         }
 
 

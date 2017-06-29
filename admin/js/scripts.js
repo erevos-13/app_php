@@ -18,7 +18,7 @@ $(document).ready(function () {
     $(".modal_thumbnails").click(function () {
 
         $("#set_user_image").prop('disabled',false);
-
+        $(this).addClass('selected');
         user_href = $('#user-id').prop('href');
         user_href_splitted =  user_href.split("=");
         user_id =  user_href_splitted[user_href_splitted.length - 1];

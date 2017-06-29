@@ -14,12 +14,11 @@ $user = Users::find_id($_GET['id']);
 
      if (isset($_POST['update'])) {
 
-
-
-
          if ($user) {
-             $user->username = $_POST['username'];
-             $user->password = $_POST['password'];
+
+
+             $user->username = $_POST['username'] ;
+             $user->password = $_POST['password'] ;
              $user->first_name = $_POST['first_name'];
              $user->last_name = $_POST['last_name'];
 
@@ -28,8 +27,8 @@ $user = Users::find_id($_GET['id']);
 
 
                  $user->save();
-                 redirect("users.php");
                  $session->message("The user {$user->id} has been update");
+                 redirect("users.php");
              }else{
 
                  $user->set_files($_FILES['user_image']);
@@ -131,7 +130,7 @@ $user = Users::find_id($_GET['id']);
 
                         <div class="form-group">
                             <label for="last_name" >last Name</label>
-                            <input type="text" name="last_name" class="form-control"  value="<?php echo  $user->last_name; ?>" >
+                            <input type="text" name="last_name" class="form-control"  value="<?php echo $user->last_name; ?>" >
 
                         </div>
                         <div class="form-group pull-right ">
