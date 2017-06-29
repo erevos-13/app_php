@@ -27,8 +27,9 @@ $user = Users::find_id($_GET['id']);
 
 
                  $user->save();
-                 $session->message("The user {$user->id} has been update");
                  redirect("users.php");
+                 $session->message("The user {$user->id} has been update");
+
              }else{
 
                  $user->set_files($_FILES['user_image']);
@@ -89,8 +90,8 @@ $user = Users::find_id($_GET['id']);
                     </h1>
 
 
-                        <div class="col-md-6 user_image_box">
-                            <a href="#" data-toggle="modal" data-target="#photo-modal" ><img class="img-responsive" src="<?php echo $user->image_path_placeholder(); ?>" alt=""></a>
+                        <div class="col-md-6 ">
+                            <a href="#" data-toggle="modal" data-target="#photo-modal" ><img class="img-responsive user_image_box" src="<?php echo $user->image_path_placeholder(); ?>" alt=""></a>
                         </div>
 
                     <!- form tag -->
@@ -103,7 +104,7 @@ $user = Users::find_id($_GET['id']);
 
                             <div class="form-group">
 
-                                <input type="file" name="user_image" >
+                                <input type="file" name="user_image"  >
 
                             </div>
 
@@ -134,8 +135,7 @@ $user = Users::find_id($_GET['id']);
 
                         </div>
                         <div class="form-group pull-right ">
-                            <button class="btn btn-danger btn-lg " >
-                                <a id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a></button>
+                            <button id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger btn-lg " >Delete</button>
 
                             <input type="submit" name="update"  class="btn btn-primary btn-lg "  value="Update">
                         </div>
