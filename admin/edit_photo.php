@@ -5,7 +5,7 @@
    if (empty($_GET['id'])) {
        redirect("photos.php");
    }else{
-       $photo = Photos::find_id($_GET['id']);
+       $photo = Photos::find_by_id($_GET['id']);
 
        if (isset($_POST['update'])){
            //set the date

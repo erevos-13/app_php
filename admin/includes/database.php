@@ -1,74 +1,95 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: erevos13
- * Date: 30/5/2017
- * Time: 11:59 μμ
- */
+
+require_once("new_config.php");
+
+class Database {
 
 
+    public $connection;
 
-class Database{
+    function __construct(){
 
-    public $con;
+        $this->open_db_connection();
 
-    /**
-     * Database constructor.
-     */
-    function __construct()
-    {
-        $this->open_db_conection();
+
     }
 
-    public function open_db_conection(){
 
-        //$this->con = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
-        $this->con = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
-        if ($this->con->connect_errno){
-            die("Databases is fail to load". $this->con->connect_error);
+    public function open_db_connection(){
+
+
+        // $this->connection = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+
+        $this->connection = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+
+
+
+        if($this->connection->connect_errno) {
+
+            die("Database connection failed badly" . $this->connection->connect_error);
+
+
         }
 
+
+
+
     }
 
 
-    public function query($sql){
 
-        $result = $this->con->query($sql);
+
+    public function query($sql) {
+
+        $result = $this->connection->query($sql);
 
         $this->confirm_query($result);
 
-
         return $result;
+
+
     }
 
     private function confirm_query($result){
 
-        if (!$result){
-            die("Query failed". $this->con->error );
+
+        if(!$result) {
+
+            die("Query Failed" . $this->connection->error);
+
         }
-    }
-
-    public function escape_string($string){
-
-       $escaped_string = mysqli_real_escape_string($this->con,$string);
-       return $escaped_string;
-    }
-
-    public function the_insert_id(){
-
-        return mysqli_insert_id($this->con);
 
     }
 
+    public function escape_string($string) {
+
+
+        $escaped_string = $this->connection->real_escape_string($string);
+
+        return $escaped_string;
+
+
+    }
+
+
+
+    public function the_insert_id() {
+
+        return $this->connection->insert_id;
+
+    }
 
 
 
 
 
-} //end of class Databases
+}  // End of Class Database
 
 
-$databases = new Database();
+$database = new Database();
 
+
+
+?>

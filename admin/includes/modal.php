@@ -1,4 +1,3 @@
-<!-- Modal -->
 <?php require_once "init.php"; ?>
 
 <?php
@@ -26,7 +25,7 @@ $photos = Photos::find_all();
 
                         <div class="col-xs-2">
                             <a role="checkbox" aria-checked="false" tabindex="0" id="" href="#" class="thumbnail">
-                                <img id="user_image" class="modal_thumbnails img-responsive " src="<?php echo $photo->picture_path(); ?>" data="<?php echo $photo->id; ?>">
+                                <img id="set_user_image" class="modal_thumbnails img-responsive " src="<?php echo $photo->picture_path(); ?>" data="<?php echo $photo->id; ?>">
                             </a>
                             <div class="photo-id hidden"></div>
                         </div>

@@ -79,7 +79,7 @@
                                         <a href="photo_comments.php?id=<?php echo $photo->id; ?>">
                                         <?php
 
-                                        $comment  = Comment::find_the_comment($photo->id);
+                                        $comment  = Comment::find_the_comments($photo->id);
 
                                         //count all object (count all the comments)
                                         echo count($comment) ;

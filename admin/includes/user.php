@@ -26,6 +26,8 @@ class Users extends Db_object {
 
 
 
+
+
     public function upload_photo(){
 
 
@@ -36,14 +38,14 @@ class Users extends Db_object {
             }
 
             if (empty($this->user_image) || empty($this->tmp_path)){
-                $this->error[] = "the file was available";
+                $this->errors[] = "the file was available";
                 return false;
             }
 
             $target_path = INCLUDES_PATH.orfeas.$this->upload_dir.orfeas.$this->user_image;
             //$target_path = "/var/www/html/udemy/app_php/admin/includes/image".$this->user_image;
             if (file_exists($target_path)){
-                $this->error[] = "The file {$this->user_image} already exist";
+                $this->errors[] = "The file {$this->user_image} already exist";
                 return false;
             }
 
@@ -51,11 +53,11 @@ class Users extends Db_object {
                 if ($this->tmp_path){
 
                     unset($this->tmp_path);
-                    $this->create();
+
                     return true;
                 }
             }else{
-                $this->error[] = "the folder is not have permission";
+                $this->errors[] = "the folder is not have permission";
                 return false;
             }
 
@@ -63,7 +65,7 @@ class Users extends Db_object {
 
     }
 
-    public function image_path_placeholder(){
+    public function image_placeholder(){
 
 
         return empty($this->user_image) ? $this->image_placeholder : "includes".orfeas.$this->upload_dir.orfeas.$this->user_image ;
@@ -76,10 +78,10 @@ class Users extends Db_object {
 
         //error check
         if (empty($file) || !$file || !is_array($file)){
-            $this->error[] = "There was no file uploaded here";
+            $this->errors[] = "There was no file uploaded here";
             return false;
         }elseif ($file['error'] != 0){
-            $this->error[] = $this->upload_error[$file['error']];
+            $this->errors[] = $this->upload_errors_array[$file['error']];
             return false;
         }else{
             $this->user_image = basename($file['name']);
@@ -100,20 +102,21 @@ class Users extends Db_object {
 
 
 
-    public static function verify_user($username , $password){
-        global $databases;
+    public static function verify_user($username, $password ) {
+        global $database;
 
-        $username = $databases->escape_string($username);
-        $password = $databases->escape_string($password);
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
 
-        $sql = "SELECT * FROM ".self::$db_table." WHERE ";
+
+        $sql = "SELECT * FROM " . self::$db_table . " WHERE ";
         $sql .= "username = '{$username}' ";
         $sql .= "AND password = '{$password}' ";
-        $sql .= "LIMIT 1 ";
+        $sql .= "LIMIT 1";
 
-        $the_result_array = self::find_this_query($sql);
+        $the_result_array = self::find_by_query($sql);
 
-        return !empty($the_result_array)? array_shift($the_result_array):false;
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
 
 
 
