@@ -11,7 +11,7 @@
 
     $sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$paginate->offset() }";
 
-    $photos = Photos::find_this_query($sql);
+    $photos = Photos::find_by_query($sql);
 
 //   $photos = Photos::find_all();
 
