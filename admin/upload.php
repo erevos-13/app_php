@@ -8,7 +8,7 @@ if (isset($_FILES['file'])){
    $photo = new Photos();
    $photo->title = $_POST['title'];
    //then i call the method for upload file
-    $photo->set_files($_FILES['file']);
+    $photo->set_file($_FILES['file']);
 
     //if all is ok then print a message
     if ($photo->save()){

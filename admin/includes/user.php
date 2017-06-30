@@ -18,9 +18,6 @@ class Users extends Db_object {
     public $first_name;
     public $last_name;
     public $user_image;
-    public $tmp_path;
-    public $size;
-    public $type;
     public $upload_dir = 'image';
     public $image_placeholder = 'http://via.placeholder.com/62x62' ;
 
@@ -44,7 +41,7 @@ class Users extends Db_object {
             }
 
             $target_path = INCLUDES_PATH.orfeas.$this->upload_dir.orfeas.$this->user_image;
-
+            //$target_path = "/var/www/html/udemy/app_php/admin/includes/image".$this->user_image;
             if (file_exists($target_path)){
                 $this->error[] = "The file {$this->user_image} already exist";
                 return false;

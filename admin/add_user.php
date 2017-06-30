@@ -1,37 +1,39 @@
+<?php include("includes/header.php"); ?>
+
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
+
 <?php
-/**
- * Created by PhpStorm.
- * User: erevos13
- * Date: 16/6/2017
- * Time: 9:35 μμ
- */
- include("includes/header.php");
- if (!$session->is_signed_in()) { redirect("login.php");  }
+
 
 
 $user = new Users();
 
-       if (isset($_POST['create'])){
+if(isset($_POST['create'])) {
 
 
-          if ($user){
-              $user->username =  $_POST['username'];
-              $user->password =  $_POST['password'];
-              $user->first_name =  $_POST['first_name'];
-              $user->last_name = $_POST['last_name'];
-
-              $user->set_files($_FILES['user_image']);
-              $user->upload_photo();
-              $session->message("The user {$user->username} has been added");
-              $user->save();
-              redirect("users.php");
-          }
-
-       }
+    if($user) {
 
 
+        $user->username = $_POST['username'];
+        $user->first_name =$_POST['first_name'];
+        $user->last_name =$_POST['last_name'];
+        $user->password =$_POST['password'];
 
 
+        $user->set_files($_FILES['user_image']);
+        $user->upload_photo();
+        $session->message("The user {$user->username} has been added");
+        $user->save();
+        redirect("users.php");
+
+
+    }
+
+
+
+
+
+}
 
 
 

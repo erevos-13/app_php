@@ -1,57 +1,64 @@
 <?php include("includes/header.php"); ?>
-<?php include "includes/modal.php"; ?>
 
+<?php include("includes/modal.php"); ?>
 
-<?php if (!$session->is_signed_in()) { redirect("login.php");  } ?>
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
 
 <?php
- if (empty($_GET['id'])){
-     redirect("users.php");
- }
 
+
+
+if(empty($_GET['id'])) {
+
+    redirect("users.php");
+
+}
 
 $user = Users::find_id($_GET['id']);
 
-     if (isset($_POST['update'])) {
 
-         if ($user) {
-
-
-             $user->username = $_POST['username'] ;
-             $user->password = $_POST['password'] ;
-             $user->first_name = $_POST['first_name'];
-             $user->last_name = $_POST['last_name'];
+if(isset($_POST['update'])) {
 
 
-             if(empty($_FILES['user_image'])){
+    if($user) {
 
 
-                 $user->save();
-                 redirect("users.php");
-                 $session->message("The user {$user->id} has been update");
+        $user->username = $_POST['username'];
+        $user->first_name =$_POST['first_name'];
+        $user->last_name =$_POST['last_name'];
+        $user->password =$_POST['password'];
 
-             }else{
+        if(empty($_FILES['user_image'])) {
 
-                 $user->set_files($_FILES['user_image']);
-                 $user->upload_photo();
-                 $user->save();
-                 $session->message("The user has been update");
-                 redirect("users.php");
+            $user->save();
+            redirect("users.php");
+            $session->message("The user has been save");
+
+        } else {
+
+            $user->set_file($_FILES['user_image']);
+            $user->upload_photo();
+            $user->save();
+            $session->message("The user has been updated");
+
+// redirect("edit_user.php?id={$user->id}");
+          redirect("users.php");
 
 
 
-
-             }
-
-
-         }
-
-
-     }
+        }
 
 
 
 
+
+
+
+    }
+
+
+
+}
 
 
 
@@ -59,8 +66,6 @@ $user = Users::find_id($_GET['id']);
 
 
 ?>
-
-
 
 
 
@@ -86,7 +91,7 @@ $user = Users::find_id($_GET['id']);
                 <div class="col-lg-12 ">
                     <h1 class="page-header">
                         User
-                        <small>edit</small>
+                        <small></small>
                     </h1>
 
 
@@ -97,7 +102,7 @@ $user = Users::find_id($_GET['id']);
                     <!- form tag -->
                     <!--when i do not put the action is like i say that is in this file.-->
 
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="edit_user.php" method="post" enctype="multipart/form-data">
 
 
                         <div class="col-md-6">
