@@ -102,3 +102,6 @@ a{
 
 /****************** End Modal *********************/
 
+.top-buffer{
+    margin-top: 20px!important;
+}

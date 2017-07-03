@@ -39,7 +39,7 @@ if (isset($_POST['submit'])){
 
 ?>
 
-<div class="col-md-4 col-md-offset-3">
+<div class="col-md-4 col-md-offset-3" style="color: white;">
 
 <h4 class="bg-danger"><?php echo $the_message; ?></h4>
 
@@ -61,6 +61,9 @@ if (isset($_POST['submit'])){
     <div class="form-group">
         <input type="submit" name="submit" value="Submit" class="btn btn-primary">
 
+    </div>
+    <div class="form-group">
+        <a href="register.php" class="btn btn-success">Register</a>
     </div>
 
 

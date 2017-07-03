@@ -15,7 +15,7 @@ if (empty($_GET['id'])){
 }
 
 
-$user = Comment::find_id($_GET['id']);
+$user = Comment::find_by_id($_GET['id']);
 
 if ($user){
     //call the delete method

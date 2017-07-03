@@ -10,11 +10,12 @@
 class Comment extends Db_object {
 
     protected static   $db_table = "comments";
-    protected static   $db_table_fields = array('photo_id', 'author', 'body');
+    protected static   $db_table_fields = array('photo_id', 'author', 'body','date');
     public $id;
     public $photo_id;
     public $author;
     public $body;
+    public $date;
 
 
 
@@ -26,6 +27,7 @@ class Comment extends Db_object {
             $comment->photo_id = (int)$photo_id;
             $comment->author = $author;
             $comment->body = $body;
+            $comment->date = date("Y-m-d H:i:s");
 
 
 

@@ -17,8 +17,7 @@ if (empty($_GET['id'])){
 }
 
 
-$photo = Photos::find_id($_GET['id']);
-
+$photo = Photos::find_by_id($_GET['id']);
 if ($photo){
     //call the delete method
     $photo->delete_photo();
@@ -27,5 +26,5 @@ if ($photo){
 
 
 }else{
-    redirect("photo.php");
+    redirect("photos.php");
 }

@@ -17,6 +17,7 @@
              $photo->caption =  $_POST['caption'];
              $photo->alternate_text =  $_POST['alternate_text'];
              $photo->description = $_POST['description'];
+             $photo->date = date("Y-m-d H:i:s");
 
 
              $photo->save();
@@ -109,7 +110,7 @@
                         <div class="inside">
                             <div class="box-inner">
                                 <p class="text">
-                                    <span class="glyphicon glyphicon-calendar"></span> Uploaded on: <?php echo $date; ?>
+                                    <span class="glyphicon glyphicon-calendar"></span> Uploaded on: <?php echo $photo->date; ?>
                                 </p>
                                 <p class="text ">
                                     Photo Id: <span class="data photo_id_box">34</span>

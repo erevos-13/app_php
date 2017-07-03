@@ -11,7 +11,7 @@ class Photos extends Db_object
     //i make a protected static var for the table in databases
     protected static $db_table = "photos";
     //here i make a var array so i can call an array for every field
-    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size');
+    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size','date');
     public $id;
     public $title;
     public $caption;
@@ -21,6 +21,7 @@ class Photos extends Db_object
     public $type;
     public $size;
     public $name;
+    public $date;
     public $tmp_name;
     public $tmp_path;
     public $upload_directory = "image";
@@ -158,6 +159,7 @@ class Photos extends Db_object
      $output .= "<p>{$photo->filename}</p>";
      $output .= "<p>{$photo->type}</p>";
      $output .= "<p>{$photo->size}</p>";
+     $output .= "<p>{$photo->date}</p>";
         echo $output;
 
  }

@@ -52,15 +52,16 @@ if (isset($_POST['submit'])){
                 <!-- Title -->
                 <h1><?php echo $photo->title; ?></h1>
 
+
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Orfeas Boytsaridis</a>
+                    by <a href="http://orfeasvou.com/resume_4/" target="_blank">Orfeas Boytsaridis</a>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Today time and day: <?php echo date('Y-m-d H:i:s') ?></>
+                <p><span class="glyphicon glyphicon-time"></span> Upload at: <?php echo $photo->date; ?> </>
 
                 <hr>
 
@@ -104,12 +105,13 @@ if (isset($_POST['submit'])){
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
+
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading"><?php echo $comment->author; ?>
+                        <h4 class="media-heading"><?php echo $comment->author; ?></h4>
+                        <p><?php echo $comment->body; ?></p>
+                        <p class="text-info">This is post at: <?php echo $comment->date; ?></p>
 
-                        </h4>
-                       <?php echo $comment->body; ?>
 
 
 

@@ -15,7 +15,7 @@ if (empty($_GET['id'])){
 }
 
 
-$user = Users::find_id($_GET['id']);
+$user = Users::find_by_id($_GET['id']);
 
 if ($user){
     //call the delete method

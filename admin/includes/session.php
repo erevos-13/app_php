@@ -7,6 +7,7 @@ class Session {
 
     private $signed_in = false;
     public $user_id; //use the id for do thinks
+    public $username;
     public $message;
     public $count;
 
@@ -49,10 +50,13 @@ class Session {
 
         if ($user){
             $this->user_id = $_SESSION['user_id'] = $user->id;
+            $this->username = $_SESSION['username'] = $user->username;
             $this->signed_in = true;
         }
 
     }
+
+
 
     //method to logout unset all the method
     public function logout(){

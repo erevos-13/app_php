@@ -34,7 +34,7 @@
 
 
 
-                <div class="col-xs-6 col-md-3">
+                <div class="col-xs-12 col-md-6">
                     <a class="thumbnail" href="photo.php?id=<?php echo $photo->id; ?>">
                         <img class="home_page_photo img-responsive" src="admin/<?php echo $photo->picture_path();  ?>"/>
                     </a>
