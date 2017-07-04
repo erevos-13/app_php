@@ -25,8 +25,8 @@
             ['Task', 'Hours per Day'],
             ['Views',    <?php echo $session->count; ?>],
             ['Comment',   <?php echo Comment::count_all(); ?>],
-            ['Users',    <?php echo User::count_all(); ?>],
-            ['Photos', <?php echo Photo::count_all(); ?>]
+            ['Users',    <?php echo Users::count_all(); ?>],
+            ['Photos', <?php echo Photos::count_all(); ?>]
 
         ]);
 

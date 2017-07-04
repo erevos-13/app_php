@@ -17,7 +17,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="chat.php">Chat</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
