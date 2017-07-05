@@ -5,39 +5,14 @@ require_once "admin/includes/init.php";
 
 
 
-if (empty($_GET['id'])){
+/*if (empty($_GET['id'])){
 
     redirect("index.php");
-}
+}*/
 
-$photo = Photos::find_by_id($_GET['id']);
+$photo = Photos::find_by_id($_GET['photo_id_comment']);
 
-
-
-
-if (isset($_POST['submit'])){
-
-    $author = trim($_POST['author']);
-    $body = trim($_POST['body']);
-
-    $new_comment = Comment::create_comment($photo->id ,$author, $body);
-
-    if ($new_comment &&  $new_comment->save()){
-
-       redirect("photo.php?id={$photo->id}");
-    }else{
-        $message = "There was some problems save";
-    }
-
-}else{
-    $author = "";
-    $body= "";
-}
-
-
- $comments = Comment::find_the_comments($photo->id);
-
-
+$comments = Comment::find_the_comments($_GET['photo_id_comment']);
 
 
 
@@ -82,16 +57,23 @@ if (isset($_POST['submit'])){
 
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form" method="post" action="">
+                    <form  onsubmit="return addComment();">
+
+
+                        <div class="form-group">
+
+                            <input id="photo_id_comment" type="hidden" name="photo_id_comment" class="form-control" value="<?php echo $photo->id; ?>">
+                        </div>
                         <div class="form-group">
                             <label for="author">Author</label>
-                            <input type="text" name="author" class="form-control">
+                            <input id="author" type="text" name="author" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="body">Message:</label>
-                            <textarea name="body" class="form-control" rows="3"></textarea>
+                            <textarea id="body" name="body" class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                        <button  id="submit" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
@@ -100,17 +82,14 @@ if (isset($_POST['submit'])){
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
-                <?php foreach ($comments as $comment) : ?>
+
 
                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
 
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><?php echo $comment->author; ?></h4>
-                        <p><?php echo $comment->body; ?></p>
-                        <p class="text-info">This is post at: <?php echo $comment->date; ?></p>
+                    <div class="media-body" id="comment">
+                        <p id="comment"  class="media-heading"></p>
+
+
 
 
 
@@ -119,7 +98,7 @@ if (isset($_POST['submit'])){
 
                 </div>
 
-                <?php endforeach; ?>
+
 
 
 

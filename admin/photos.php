@@ -64,7 +64,7 @@
 
                                             <a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>" >Delete</a>
                                             <a href="edit_photo.php?id=<?php echo $photo->id; ?>" >Edit</a>
-                                            <a href="../photo.php?id=<?php echo $photo->id; ?>" >View</a>
+                                            <a href="../photo.php?photo_id_comment=<?php echo $photo->id; ?>" >View</a>
 
 
                                         </div>
