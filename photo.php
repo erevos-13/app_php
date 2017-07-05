@@ -94,6 +94,9 @@ $comments = Comment::find_the_comments($_GET['photo_id_comment']);
 
 
 
+
+
+
                     </div>
 
                 </div>

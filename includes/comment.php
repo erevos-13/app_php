@@ -40,14 +40,16 @@ $row_count = mysqli_num_rows($result);
 
 $html = '';
     while ($row = mysqli_fetch_array($result)){
-        array_push($arr , $row);
+        echo "<h3>".$row['author']."</h3>";
+        echo "<p>".$row['body']."</p>";
+        echo "<p>Time post @ :<pre>".$row['date']."</pre></p>";
 
 
     }
 
 
 mysqli_close($con);
-echo json_encode($arr);
+
 
 
 
