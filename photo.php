@@ -5,10 +5,10 @@ require_once "admin/includes/init.php";
 
 
 
-/*if (empty($_GET['id'])){
+if (empty($_GET['photo_id_comment'])){
 
     redirect("index.php");
-}*/
+}
 
 $photo = Photos::find_by_id($_GET['photo_id_comment']);
 

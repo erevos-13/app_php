@@ -22,7 +22,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+      <script>
+        $(".nav li").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+        });
+</script>
 </body>
 
 </html>

@@ -10,8 +10,8 @@ $user = new Users();
 
 if(isset($_POST['register'])) {
 
-
-    if($user) {
+    $user_found = Users::verify_user( $_POST['username'] , $_POST['password']);
+    if(!$user_found) {
 
 
         $user->username = $_POST['username'];
@@ -21,15 +21,21 @@ if(isset($_POST['register'])) {
 
 
         $user->save();
-        redirect("index.php");
+        redirect("../index.php");
 
 
+    }else{
+        $the_message = 'There is there a user all ready';
     }
 
 
 
 
 
+}else{
+    $username = '';
+    $password = '';
+    $the_message = "";
 }
 
 
@@ -39,6 +45,8 @@ if(isset($_POST['register'])) {
 
 
 <div class="col-md-4 col-md-offset-3 " style="color: white;">
+
+    <h4 class="bg-danger"><?php echo $the_message; ?></h4>
 
     <h4>You can register here:</h4>
 

@@ -20,27 +20,7 @@ function addComment() {
             $("#author").val('');
             $('#body').val('');
 
-            /* $.each(data, function (index, item) {
-             // $('#chat_box').val( $('#chat_box').val() + item.author + ' : ' + item.body + '@ '+ item.date + '\n' );
-             $('#comment').val("<h3>" + item.author + "</h3>" + '<p>' + item.body + '</p>' + '<pre>Post @' + item.date + '</pre>');
-
-             });
-*/
-
-
-            
-
-
-
-
-
-
-
         }
-
-
-
-
     });
 return false;
 }
@@ -72,6 +52,9 @@ function updateComment(){
 
 
 }
- setInterval( updateComment , 3000 );
+ setInterval( updateComment , 2000 );
+
+
+
 
 

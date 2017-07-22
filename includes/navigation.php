@@ -12,18 +12,18 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
+                <ul class="nav navbar-nav" >
+                    <li class="active">
+                        <a  href="chat.php">About</a>
                     </li>
                     <li>
-                        <a href="chat.php">Chat</a>
+                        <a   href="chat.php">Chat</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a  href="#">Contact</a>
                     </li>
                     <li>
-                        <a href="admin">Admin</a>
+                        <a  href="admin">Admin</a>
                     </li>
                 </ul>
             </div>

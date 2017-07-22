@@ -42,7 +42,7 @@ $html = '';
     while ($row = mysqli_fetch_array($result)){
         echo "<h3>".$row['author']."</h3>";
         echo "<p>".$row['body']."</p>";
-        echo "<p>Time post @ :<pre>".$row['date']."</pre></p>";
+        echo "<pre>Time post @ :".$row['date']."</pre>";
 
 
     }
