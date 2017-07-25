@@ -40,7 +40,7 @@ function updateComment(){
 
         },
         error : function( http , status , error ) {
-            alert( 'Some Error malakia : ' + error );
+            alert( 'Some Error : ' + error );
         }
 
 

@@ -7,6 +7,7 @@ if (isset($_FILES['file'])){
 
    $photo = new Photos();
    $photo->title = $_POST['title'];
+   $photo->date = date("Y-m-d H:i:s");
    //then i call the method for upload file
     $photo->set_file($_FILES['file']);
 
